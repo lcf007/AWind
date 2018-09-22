@@ -29,6 +29,7 @@ class NYTimes extends Component {
         console.log('still null??')
       else{
         this.Objects = response.results;
+        console.log(this.Objects[0].abstract)
       }
     }).catch((error) => {
       console.log(error)
@@ -36,12 +37,16 @@ class NYTimes extends Component {
   }
 
   render() {
-    return (
-      <div>
-        NY Times
-        <Article abstract="123" key='0' />
-      </div>
-    );
+    if (this.Ojbects.length > 0){
+      return (
+        <div>
+          NY Times
+          <Article abstract={this.Objects[0].abstract} key='0' />
+        </div>
+      );
+    }else{
+      return( <p> Loading... </p>);
+    }
   }
 }
 
