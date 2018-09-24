@@ -8,39 +8,36 @@ class NYTimes extends Component {
     super()
 
     this._initState = {
-        abstract:'',
-        byline:'',
-        created_date:''
+      articles:null
     }
     this.state = this._initState;
-    this.Ojbects = [];
   }
 
   componentWillMount(){
     fetch( URL_NYT, {
       method: 'GET',
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      },
     })
     .then(res => res.json())
-    .then((response) => {
-      if (response === null)
-        console.log('still null??')
-      else{
-        this.Objects = response.results;
-      }
+    .then((res) => {
+      this.setState({articles:res.results});
+      console.log(res.results);
     }).catch((error) => {
       console.log(error)
     })
   }
 
   render() {
+    if ( !this.state.articles )
+      return <div>Loading...</div>
     return (
       <div>
-        NY Times
-        <Article abstract="123" key='0' />
-      </div>
+        <h1 className='text-center'>NY Times Top Stories</h1>
+        {
+          this.state.articles.map( (obj, i) => 
+            <Article obj={obj} key={i} index={i}/>
+          )
+        }
+        </div>
     );
   }
 }
