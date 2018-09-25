@@ -35,6 +35,8 @@ class NYTimes extends Component {
         {
           this.state.articles.map( (obj, i) => 
             <Article obj={obj} key={i} index={i}/>
+            
+            
           )
         }
         </div>

@@ -19,7 +19,7 @@ class App extends Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect push to="/NYTimes" />;
+      return <Redirect push to="/MyApp" />;
     }
     return (
       <div className="App" >
