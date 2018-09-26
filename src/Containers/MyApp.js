@@ -16,7 +16,7 @@ class MyApp extends Component {
                     <Tab>About</Tab>
                 </TabList>
                 <TabPanel>
-                    NYTimes
+                    <NYTimes />
                 </TabPanel>
                 <TabPanel>
                     <Stock />
