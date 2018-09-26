@@ -20,7 +20,6 @@ class NYTimes extends Component {
     .then(res => res.json())
     .then((res) => {
       this.setState({articles:res.results});
-      console.log(res.results);
     }).catch((error) => {
       console.log(error)
     })
